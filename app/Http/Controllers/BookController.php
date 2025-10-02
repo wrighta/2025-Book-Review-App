@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
-use Illuminate\Http\Request;
+use App\Models\Book;use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -12,6 +11,7 @@ class BookController extends Controller
      */
     public function index()
     {
+
         $books = Book::all(); // Fetch all books
         return view('books.index', compact('books')); // Return the view with books
     }
@@ -37,7 +37,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('books.show', compact('book')); // Return the view with the specific book
     }
 
     /**
