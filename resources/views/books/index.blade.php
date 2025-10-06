@@ -6,6 +6,13 @@
           
     </x-slot>
 
+    
+    <!--alert-success is a component I created to display a success message that may be sent from the controller.
+    for example when a book is deleted a message a message the message  "Book Deleted Successfully" will-->
+    <x-alert-success>
+        {{ session('success') }}
+    </x-alert-success>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
