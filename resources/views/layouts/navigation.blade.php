@@ -15,7 +15,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+<<<<<<< HEAD
                     
+=======
+                    <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.index')">
+                        {{ __('View All Books') }}
+                    </x-nav-link>
+>>>>>>> 96c2cde5c5856ddaa390ae245a23912ebd100d4d
                 </div>
             </div>
 
