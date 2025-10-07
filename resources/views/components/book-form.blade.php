@@ -1,4 +1,4 @@
-@props(['action', 'method'])
+@props(['action', 'method', 'book'])
 
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -66,13 +66,17 @@
 
     @isset($book->image)
         <div class="mb-4">
-            <img src="{{ asset($book->image) }}" alt="Book cover" class="w-24 h-32 object-cover">
+             <img src="{{asset( 'images/books/' . $book->image)}}" alt="$book->title" class="w-24 h-32 object-cover">
         </div>
     @endisset
 
     <div>
-        <x-primary-button>
-            {{ isset($book) ? 'Update Book' : 'Add Book' }}
-        </x-primary-button>
-    </div>
+    <x-primary-button>
+        {{ isset($book) ? 'Update Book' : 'Add Book' }}
+    </x-primary-button>
+      <!-- Cancel Button -->
+        <button type="button" onclick="window.location='{{ route('books.index') }}'" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Cancel
+        </button>
+</div>
 </form>
