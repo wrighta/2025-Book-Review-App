@@ -91,7 +91,7 @@ class BookController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Check if the image is uploaded and handle it
+       
         if ($request->hasFile('image')) {
 
             $imageName = time().'.'.$request->image->extension();
