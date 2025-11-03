@@ -12,7 +12,7 @@
             type="text"
             name="title"
             id="title"
-            value="{{ old('title', $book->title ?? '') }}"
+            value="{{ old('title', $book->title ?? ' ') }}"
             required
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
         />

@@ -74,8 +74,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        // echo $book;
-        // dd($book);
+       
         return view('books.edit')->with('book', $book);
     }
 
