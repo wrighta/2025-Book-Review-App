@@ -17,6 +17,36 @@ class BookController extends Controller
     }
 
     /**
+     * Search for books and reuse the index view.
+     */
+    public function search(Request $request)
+    {
+
+    
+        $q = trim($request->query('q', ''));
+
+        // optionally, guard empty searches
+        // if ($q === '') {
+        //     return redirect()->route('books.index');
+        // }
+
+        $books = Book::query()
+            ->when($q !== '', function ($query) use ($q) {
+                $query->where(function ($sub) use ($q) {
+                    $sub->where('title', 'like', "%{$q}%")
+                        ->orWhere('description', 'like', "%{$q}%")
+                        ->orWhere('year', 'like', "%{$q}%");
+                });
+            })
+            ->orderByDesc('created_at')
+            ->paginate(12)
+            ->withQueryString(); // keeps ?q=... on pagination links
+
+        // Reuse the same view; pass $q so the box stays filled and summary shows
+        return view('books.index', compact('books', 'q'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -111,6 +141,8 @@ class BookController extends Controller
 
         return to_route('books.show', $book)->with('success','Book updated successfully');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
